@@ -1,0 +1,102 @@
+---
+title: "ENCUESTA DE HOGARES 2018"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+# PAGINA 1
+
+### Tabla 1 
+
+```{r}
+library(knitr)
+load("D:\\2020\\bases de datos\\eh18.Rdata")
+t1<-table(eh18p$s02a_02,eh18p$p0)
+kable(t1,caption = "PObreza moderada segun la edad , EH2018")
+```
+
+### Tabla de valores
+
+```{r}
+summary(t1)
+```
+
+### Grafico 1 
+```{r}
+barplot(t1)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Tabla 2
+
+```{r}
+t2<-table(eh18p$s02a_02,eh18p$pext0)
+kable(t2,caption = "PObreza extrema segun la edad , EH2018")
+```
+
+### Grafico 2
+```{r}
+barplot(t2,col="blue",horiz=T)
+```
+
+
+# PAGINA 2
+
+### Tablas :
+
+```{r}
+load("D:\\2020\\bases de datos\\eh18.Rdata")
+t1<-table(eh18p$niv_ed,eh18p$p0)
+t2<-table(eh18p$niv_ed,eh18p$pext0)
+kable(round(prop.table(t1,1)*100,2),caption = "PObreza moderada dado el nivel educativo , EH2018")
+kable(round(prop.table(t2,1)*100,2),caption = "PObreza extrema dado el nivel educativo , EH2018")
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+### Grafico 1
+
+```{r}
+plot(t1)
+```
+
+### Grafico 2
+```{r}
+barplot(t(t2))
+```
+
+# PAGINA 3
+
+### Tabla 1 
+
+```{r}
+library(knitr)
+load("D:\\2020\\bases de datos\\eh18.Rdata")
+t1<-table(eh18p$s02a_02,eh18p$p0)
+kable(t1,caption = "PObreza moderada segun la edad , EH2018")
+```
+
+### Tabla de valores
+
+```{r}
+summary(t1)
+```
+Column {data-width=650}
+---------------------------------------------------------------------------
+### Grafico 1 
+
+```{r}
+barplot(t1)
+```
+
+
+# PAGINA 4
