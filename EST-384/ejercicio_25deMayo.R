@@ -12,6 +12,5 @@ pank(bd,krange=2:10,usepam=TRUE)
 load("D:\\2020\\bases de datos\\oct20.RData")
 bd<-data.frame(computo[6], computo[14:25])
 
-bd%>%filter(bd$Municipio=="Sucre")%>%kmeans(bd[2:13],3)
-bd%>%filter(bd$Municipio=="Sucre")%>%pamk(bd[2:13],
-                                          krange=2:10,criterion="asw",usepam=TRUE)
+bd%>%filter(bd$Municipio=="Sucre")%>%kmeans(bd[,-1],3)
+bd%>%filter(bd$Municipio=="Sucre")%>%pamk(bd[,-1],krange=2:10,criterion="asw",usepam=TRUE)
