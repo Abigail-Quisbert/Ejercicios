@@ -1,0 +1,23 @@
+---
+title: "Ejercicio API"
+author: "Abigail Quisbert"
+date: "27/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# EJERCICIO
+ 1.- Elobore un grafico del rankings de los canales de television usando gtrends y markdow
+
+```{r}
+library(gtrendsR)
+c1<-gtrends(c("red uno","bolivision","unitel","rtp","bolivia tv"),geo = "BO")
+plot(c1)
+```
+
+2.- Elija 2 indicadores de la base de datos del banco mundial y elabore un grafico sobre la evolucion del indnicador, compare los resultados por lo menos para 3 paises.En markdow. 
+
+
