@@ -1,0 +1,41 @@
+---
+title: "Clustering Jerarquico"
+author: "Abigail Quisbert"
+date: "1/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Ejercicio:
+1. Usar los datos del 20 de octubre, agregar los resultados en terminos relativos para los municipios y generar el dendograma para los tres tipos de enlaces de forma visual sugerir un valor de $k$ para cada tipo de enlace
+
+```{r}
+library(cluster)
+library(dplyr)
+load("D:\\2020\\bases de datos\\oct20.RData")
+bd<-data.frame(computo[6], computo[14:25])
+
+bd1<-bd%>%filter(bd$Municipio=="Sucre")
+
+hs<-hclust(bd1,method = "single")
+hc<-hclust(bd1,method = "complete")
+ha<-hclust(bd1,method = "average")
+cs<-cutree(hs,3)
+cc<-cutree(hc,3)
+ca<-cutree(ha,3)
+
+table(cs,cc)
+table(cs,ca)
+table(cc,ca)
+
+par(mfrow=c(2,1))
+plot(hs,hang = 0.1, labels = iris[["Municipio"]],cex=0.5)
+rect.hclust(hs,k=3)
+plot(hc,hang = 0.1, labels = iris[["Municipio"]],cex=0.5)
+rect.hclust(hc,k=3)
+plot(ha,hang = 0.1, labels = iris[["Municipio"]],cex=0.5)
+rect.hclust(ha,k=3)
+```
