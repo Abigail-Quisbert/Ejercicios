@@ -20,4 +20,19 @@ plot(c1)
 
 2.- Elija 2 indicadores de la base de datos del banco mundial y elabore un grafico sobre la evolucion del indnicador, compare los resultados por lo menos para 3 paises.En markdow. 
 
+### Banco mundial
+
+```{r}
+library(wbstats)
+index<-wbindicators("es")
+edu<-wbsearch(pattern = "education")
+pobreza<-wbsearch(pattern = "poverty")
+
+gdp<-wbsearch(pattern = "gdp")
+
+pp<-wbcountries()
+s1<-wb(country = "BOL",indicator = "NY.GDP.MKTP.CD")
+plot(s1$date,s1$value)
+```
+
 
